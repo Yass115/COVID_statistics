@@ -1,5 +1,18 @@
 import pandas as pd
 
+# Code couleur (pour l'ésthétique)
+RESET = "\033[0m"  # Réinitialisation de la couleur
+NOIR = "\033[30m"  # Texte noir
+ROUGE = "\033[31m"  # Texte rouge
+VERT = "\033[32m"  # Texte vert
+JAUNE = "\033[33m"  # Texte jaune
+BLEU = "\033[34m"  # Texte bleu
+MAGENTA = "\033[35m"  # Texte magenta
+CYAN = "\033[36m"  # Texte cyan
+BLANC = "\033[37m"  # Texte blanc
+
+
+
 df_cases_ages = pd.read_csv("COVID19BE_CASES_AGESEX.csv")
 df_cases_commune = pd.read_csv("COVID19BE_CASES_MUNI_CUM.csv")
 df_hospital = pd.read_csv("COVID19BE_HOSP.csv")
@@ -39,20 +52,95 @@ clean_df_hospital_brussels = df_hospital_brussels.dropna()
 clean_df_tests_brussels = df_tests_brussels.dropna()
 clean_df_death_brussels = df_death_brussels.dropna()
 
-print(clean_df_death_brussels)
-print(clean_df_tests_brussels)
-print(clean_df_hospital_brussels)
-print(clean_df_cases_brussels_commune)
-print(clean_df_ages_brussels)
-print("-----------------------------------------------------")
-print(df_cases_commune)
-print(df_death)
-print(df_hospital)
-print(df_cases_ages)
-print(df_tests)
+#tests pour voir que tout est ok
+#print(clean_df_death_brussels)
+#print(clean_df_tests_brussels)
+#print(clean_df_hospital_brussels)
+#print(clean_df_cases_brussels_commune)
+#print(clean_df_ages_brussels)
+#print("-----------------------------------------------------")
+#print(df_cases_commune)
+#print(df_death)
+#print(df_hospital)
+#print(df_cases_ages)
+#print(df_tests)
 
 '''Maintenant que l'on a nettoyé notre jeu de donnée nous pouvons passer à l'analyse'''
 
+'''clean_df_death_brussels
+clean_df_tests_brussels
+clean_df_hospital_brussels
+clean_df_cases_brussels_commune
+clean_df_ages_brussels'''
+
+#moyennes
+
+mean_death = clean_df_death_brussels["DEATHS"].mean()
+mean_all_tests = clean_df_tests_brussels["TESTS_ALL"].mean()
+mean_positif_cases = clean_df_tests_brussels["TESTS_ALL_POS"].mean()
+
+mean_new_in_hospital = clean_df_hospital_brussels["NEW_IN"].mean()
+mean_new_out_hospital = clean_df_hospital_brussels["NEW_OUT"].mean()
+mean_resp = clean_df_hospital_brussels["TOTAL_IN_RESP"].mean()
+mean_intensive_care = clean_df_hospital_brussels["TOTAL_IN_ICU"].mean()
+mean_ecmo = clean_df_hospital_brussels["TOTAL_IN_ECMO"].mean()
+mean_reporting = clean_df_hospital_brussels["NR_REPORTING"].mean()
+print(" ")
+print(" ")
+print("-------------------------------------------------------------")
+print("Chiffres COVID à Bruxelles du 15/03/2020 jusqu'au 31/01/2023:")
+print("")
+print("")
+
+
+print(CYAN+"VOICI LES MOYENNES: "+RESET)
+
+
+print("Morts: "+MAGENTA+f"{mean_death}"+RESET)
+print("Tests efectués: "+MAGENTA+f"{mean_all_tests}"+RESET)
+print("Tests positifs: "+MAGENTA+f"{mean_positif_cases}"+RESET)
+print("Personnes entrantes à l'hospital: "+MAGENTA+f"{mean_new_in_hospital}"+RESET)
+print("Personne sortantes de l'hopital: "+MAGENTA+f"{mean_new_out_hospital}"+RESET)
+print("Personnes sous respirateur: "+MAGENTA+f"{mean_resp}"+RESET)
+print("Personne sous oxygénation extracorporel: "+MAGENTA+f"{mean_ecmo}"+RESET)
+print("Personnes aux soins intensifs: "+MAGENTA+f"{mean_intensive_care}"+RESET)
+print("Nombre de cas rapportés: "+MAGENTA+f"{mean_reporting}"+RESET)
+print(" ")
+print(" ")
+print("---------------------------------------------------------------------------------------------------------------------------------")
+
+print(CYAN+"VOICI LES SOMMES: "+RESET)
+sum_death = clean_df_death_brussels["DEATHS"].sum()
+sum_all_tests = clean_df_tests_brussels["TESTS_ALL"].sum()
+sum_positif_cases = clean_df_tests_brussels["TESTS_ALL_POS"].sum()
+
+sum_new_in_hospital = clean_df_hospital_brussels["NEW_IN"].sum()
+sum_new_out_hospital = clean_df_hospital_brussels["NEW_OUT"].sum()
+sum_resp = clean_df_hospital_brussels["TOTAL_IN_RESP"].sum()
+sum_intensive_care = clean_df_hospital_brussels["TOTAL_IN_ICU"].sum()
+sum_ecmo = clean_df_hospital_brussels["TOTAL_IN_ECMO"].sum()
+sum_reporting = clean_df_hospital_brussels["NR_REPORTING"].sum()
+
+print("Morts: "+MAGENTA+f"{sum_death}"+RESET)
+print("Tests efectués: "+MAGENTA+f"{sum_all_tests}"+RESET)
+print("Tests positifs: "+MAGENTA+f"{sum_positif_cases}"+RESET)
+print("Personnes entrantes à l'hospital: "+MAGENTA+f"{sum_new_in_hospital}"+RESET)
+print("Personne sortantes de l'hopital: "+MAGENTA+f"{sum_new_out_hospital}"+RESET)
+print("Personnes sous respirateur: "+MAGENTA+f"{sum_resp}"+RESET)
+print("Personne sous oxygénation extracorporel: "+MAGENTA+f"{sum_ecmo}"+RESET)
+print("Personnes aux soins intensifs: "+MAGENTA+f"{sum_intensive_care}"+RESET)
+print("Nombre de cas rapportés: "+MAGENTA+f"{sum_reporting}"+RESET)
+print(" ")
+print(" ")
+
+
+percent_deaths = round(sum_death/sum_positif_cases,3)
+print("Pourcentage de morts: "+ROUGE+f"{percent_deaths} %"+RESET)
+
+percent_covid = round(sum_positif_cases/sum_all_tests,3)
+print("Pourcentage d'infection: "+ROUGE+f"{percent_covid} %"+RESET)
+
+percent_deaths2 = round(sum_death/sum_all_tests,3)
+print(percent_deaths2)
+
 #TODO
-
-
