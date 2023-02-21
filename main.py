@@ -1,5 +1,8 @@
 import pandas as pd
 
+#aPPLICATION DU COURS DE STATISTIQUES
+#DONNEES QUANTITATIVES DISCRETES
+
 # Code couleur (pour l'ésthétique)
 RESET = "\033[0m"  # Réinitialisation de la couleur
 NOIR = "\033[30m"  # Texte noir
@@ -109,7 +112,7 @@ print(" ")
 print(" ")
 print("---------------------------------------------------------------------------------------------------------------------------------")
 
-print(CYAN+"VOICI LES SOMMES: "+RESET)
+print(CYAN+"VOICI LES EFFECTIFS TOTAUX: "+RESET)
 sum_death = clean_df_death_brussels["DEATHS"].sum()
 sum_all_tests = clean_df_tests_brussels["TESTS_ALL"].sum()
 sum_positif_cases = clean_df_tests_brussels["TESTS_ALL_POS"].sum()
@@ -142,5 +145,72 @@ print("Pourcentage d'infection: "+ROUGE+f"{percent_covid} %"+RESET)
 
 percent_deaths2 = round(sum_death/sum_all_tests,3)
 print(percent_deaths2)
+print("-----------------------------------------------------------------")
+print(CYAN+"NOMBRE DE CAS PAR COMMUNE: "+RESET)
 
-#TODO
+anderlecht = 48048
+Ouderghem = 14606
+Berchem_saint_agathe = 10283
+Bruxelles = 73848
+Etterbeek =  21896
+Evere = 17544
+Foret = 24866
+Ganshoren = 10013
+Elsene = 38298
+Jette = 21183
+Koekelberg =  8510
+Molenbeek_Saint_Jean = 39327
+Saint_Gilles = 21623
+Saint_Josse_Ten_Node = 10474
+Schaerbeek = 54820
+Uccle = 35348
+Watermael_Boitsfort = 10941
+Woluwe_Saint_Lambert = 24424
+Saint_Peters_Leuw = 17542
+
+total_cases = 503594
+
+print("Anderlecht: "+MAGENTA+f"{anderlecht}"+RESET)
+print("Ouderghem: "+MAGENTA+f"{Ouderghem}"+RESET)
+print("Berchem-saint-agathe: "+MAGENTA+f"{Berchem_saint_agathe}"+RESET)
+print("Bruxelles: "+MAGENTA+f"{Bruxelles}"+RESET)
+print("Etterbeek: "+MAGENTA+f"{Etterbeek}"+RESET)
+print("Evere: "+MAGENTA+f"{Evere}"+RESET)
+print("Foret: "+MAGENTA+f"{Foret}"+RESET)
+print("Ganshoren: "+MAGENTA+f"{Ganshoren}"+RESET)
+print("Elsene: "+MAGENTA+f"{Elsene}"+RESET)
+print("Jette: "+MAGENTA+f"{Jette}"+RESET)
+print("Koekelberg: "+MAGENTA+f"{Koekelberg}"+RESET)
+print("Molenbeek-saint-jean: "+MAGENTA+f"{Molenbeek_Saint_Jean}"+RESET)
+print("Saint-gilles: "+MAGENTA+f"{Saint_Gilles}"+RESET)
+print("saint-josse-ten-node: "+MAGENTA+f"{Saint_Josse_Ten_Node}"+RESET)
+print("schaerbeek: "+MAGENTA+f"{Schaerbeek}"+RESET)
+print("uccle: "+MAGENTA+f"{Uccle}"+RESET)
+print("watermael-boitsfort: "+MAGENTA+f"{Watermael_Boitsfort}"+RESET)
+print("woluwe-saint-lambert: "+MAGENTA+f"{Woluwe_Saint_Lambert}"+RESET)
+print("saint-peters-leuw: "+MAGENTA+f"{Saint_Peters_Leuw}"+RESET)
+print(" ")
+print(" ")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
